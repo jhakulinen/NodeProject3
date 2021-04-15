@@ -16,7 +16,7 @@ exports.create = (req, res) => {
     });
 
     //Saving to database
-    newMusic.save()
+    music.save()
         .then(oMusic => {
             res.send(oMusic);
         }).catch(err => {
