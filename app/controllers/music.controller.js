@@ -10,7 +10,7 @@ exports.create = (req, res) => {
     }
 
     //Create a new title
-    const newMusic = new Music({
+    const music = new Music({
         title: req.body.title,
         artist: req.body.artist
     });
