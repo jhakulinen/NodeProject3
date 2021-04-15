@@ -8,11 +8,11 @@ module.exports = (app) => {
     app.get("/api/getall", music.getAll);
 
     //Get a single title with ID
-    app.get("/api/:id", music.getById);
+    app.get("/api/:musicId", music.getById);
 
     //Update a title with ID
-    app.put("/api/update/:id", music.update);
+    app.put("/api/update/:musicId", music.update);
 
     //Delete title with ID
-    app.delete("/api/delete/:id", music.delete)
+    app.delete("/api/delete/:musicId", music.delete)
 }
