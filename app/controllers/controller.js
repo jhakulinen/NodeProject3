@@ -1,4 +1,4 @@
-const Music = require("../models/music.model.js");
+const Music = require("../models/model.js");
 
 //Create and save a new title
 exports.create = (req, res) => {

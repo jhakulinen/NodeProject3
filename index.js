@@ -4,12 +4,12 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-const dbConfig = require("./config/development.config.js");
 const mongoose = require("mongoose");
+var uri = "mongodb+srv://m001-student:m001-mongodb-basics@cluster0.dajnq.mongodb.net/NodeProject3?retryWrites=true&w=majority"
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(dbConfig.url, {
+mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
     res.send("Hello!")
 });
 
-require("./app/routes/music.routes")(app);
+require("./app/routes/routes")(app);
 
 app.listen(PORT, () => {
     console.log("Server is running!")

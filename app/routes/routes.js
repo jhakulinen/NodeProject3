@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    const music = require("../controllers/music.controller.js")
+    const music = require("../controllers/controller.js")
 
     //Add new music
     app.post("/api/add", music.create);
