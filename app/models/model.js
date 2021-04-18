@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+//Luodaan skeema, joka määrittää, missä muodossa data tulee viedä tietokantaan
 const MusicSchema = mongoose.Schema({
     title: {
         type: String,

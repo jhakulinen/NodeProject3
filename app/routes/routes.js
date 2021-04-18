@@ -1,18 +1,19 @@
+//Tuodaan reittien toiminnot erillisestä tiedostosta, jotta ne voidaan liittää mukaan omaan reittiinsä
 module.exports = (app) => {
     const music = require("../controllers/controller.js")
 
-    //Add new music
+    //Luodaan reitti kappaleen lisäämiselle
     app.post("/api/add", music.create);
 
-    //Get all music
+    //Luodaan reitti, joka hakee kaikki kappaleet
     app.get("/api/getall", music.getAll);
 
-    //Get a single title with ID
+    //Luodaan reitti, joka hakee kappaleen ID:n avulla
     app.get("/api/:musicId", music.getById);
 
-    //Update a title with ID
+    //Luodaan reitti, joka päivittää tietyn kappaleen ID:n avulla
     app.put("/api/update/:musicId", music.update);
 
-    //Delete title with ID
+    //Luodaan reitti, joka poistaa tietyn kappaleen ID:n avulla
     app.delete("/api/delete/:musicId", music.delete)
 }

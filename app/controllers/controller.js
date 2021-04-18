@@ -1,21 +1,21 @@
+//Tuodaan tietokannan malli erillisestä tiedostosta
 const Music = require("../models/model.js");
 
-//Create and save a new title
+//Ensin tarkistetaan onko "title" lisätty. Jos ei, niin annetaan virheviesti.
 exports.create = (req, res) => {
-    //Validating the title
     if(!req.body.title) {
         return res.status(400).send({
             message: "You have to enter the title!"
         });
     }
 
-    //Create a new title
+    //Luodaan uusi kappale
     const music = new Music({
         title: req.body.title,
         artist: req.body.artist
     });
 
-    //Saving to database
+    //Tallennetaan luotu kappale tietokantaan
     music.save()
         .then(oMusic => {
             res.send(oMusic);
@@ -26,7 +26,7 @@ exports.create = (req, res) => {
         });
 };
 
-//Get all music titles
+//Haetaan kaikki kappaleet tietokannasta
 exports.getAll = (req, res) => {
     Music.find()
         .then(oMusic => {
@@ -38,7 +38,7 @@ exports.getAll = (req, res) => {
         });
 };
 
-//Get a music title with ID
+//Haetaan kappale tietokannasta ID:n avulla. Mikäli annetulla ID:llä ei ole kappaletta tietokannassa tai tapahtuu muu virhe niin niistä saa ilmoituksen
 exports.getById = (req, res) => {
     Music.findById(req.params.musicId)
         .then(oMusic => {
@@ -60,16 +60,15 @@ exports.getById = (req, res) => {
         });
 };
 
-//Update the title with the ID
+//Taas tarkistetaan, että on annettu "title".
 exports.update = (req, res) => {
-    //Validating the title
     if(!req.body.title) {
         return res.status(400).send({
             message: "You have to enter the title!"
         });
     }
 
-    //Find a music title and update it
+    //Etsitään kappale ID:n perusteella ja päivitetään se. Tarkistetaan samat virheet, kuin aikaisemmin.
     Music.findByIdAndUpdate(req.params.musicId, {
         title: req.body.title,
         artist: req.body.artist
@@ -93,7 +92,7 @@ exports.update = (req, res) => {
         }); 
 };
 
-//Deleting a music title with ID
+//Poistetaan kappale ID:n perusteella. Tarkastetaan samat virheet, kuten aikaisemmin.
 exports.delete = (req, res) => {
     Music.findByIdAndRemove(req.params.musicId)
         .then(oMusic => {
