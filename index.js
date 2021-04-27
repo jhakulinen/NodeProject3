@@ -1,9 +1,11 @@
 const express = require("express");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
 const PORT = process.env.PORT || 8080;
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(cors());
 const mongoose = require("mongoose");
 //Lisätään tietokannan osoite muuttujaan.
 var uri = "mongodb+srv://m001-student:m001-mongodb-basics@cluster0.dajnq.mongodb.net/NodeProject3?retryWrites=true&w=majority"
